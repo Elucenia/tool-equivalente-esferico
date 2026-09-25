@@ -1,0 +1,216 @@
+{
+  "tool": {
+    "id": "equivalente-esferico",
+    "title": "Equivalente esférico e transposição",
+    "short": "Refração em EE, transposição e vetores J0/J45",
+    "desc": "Calcule o equivalente esférico da refração, a transposição do cilindro e os vetores de Thibos (J0 e J45), com a classificação de miopia do IMI.",
+    "lead": "Resume a refração esferocilíndrica em um único valor (equivalente esférico), transpõe o cilindro e classifica a miopia pelos critérios do International Myopia Institute.",
+    "spec": [
+      "oftalmologia",
+      "pediatria"
+    ],
+    "tier": 1,
+    "fields": [
+      [
+        "esf",
+        "Esfera",
+        "num",
+        {
+          "min": -30,
+          "max": 30,
+          "step": 0.25,
+          "unit": "D",
+          "ph": "-2,00"
+        }
+      ],
+      [
+        "cil",
+        "Cilindro",
+        "num",
+        {
+          "min": -10,
+          "max": 10,
+          "step": 0.25,
+          "unit": "D",
+          "ph": "-1,00"
+        }
+      ],
+      [
+        "eixo",
+        "Eixo do cilindro",
+        "num",
+        {
+          "min": 0,
+          "max": 180,
+          "step": 1,
+          "unit": "graus",
+          "ph": "180",
+          "opt": true
+        }
+      ]
+    ],
+    "formula": "<p><strong>Equivalente esférico</strong> (M) = esfera + cilindro ÷ 2.</p><p><strong>Transposição</strong>: nova esfera = esfera + cilindro; novo cilindro = −cilindro; novo eixo = eixo ± 90°.</p><p><strong>Vetores de Thibos</strong>: J0 = −(C/2) × cos(2α); J45 = −(C/2) × sen(2α).</p>",
+    "table": [
+      [
+        "Equivalente esférico",
+        "Classificação (IMI 2019)"
+      ],
+      [
+        "≤ −0,50 D",
+        "Miopia"
+      ],
+      [
+        "≤ −6,00 D",
+        "Alta miopia"
+      ],
+      [
+        "&gt; −0,50 D",
+        "Sem miopia"
+      ]
+    ],
+    "tips": [
+      "Em crianças, a classificação de miopia exige refração sob <strong>cicloplegia</strong>: sem ela, a acomodação superestima a miopia.",
+      "O equivalente esférico esconde o astigmatismo: um EE de 0 pode corresponder a +1,00 −2,00, com visão ruim.",
+      "Para comparar refrações ou fazer médias de astigmatismo, use os vetores J0 e J45, não o cilindro e o eixo.",
+      "A alta miopia (≤ −6,00 D) aumenta o risco de descolamento de retina, maculopatia miópica e glaucoma: o seguimento é diferente."
+    ],
+    "sources": [
+      [
+        "Thibos LN, Wheeler W, Horner D. Power vectors: an application of Fourier analysis to the description and statistical analysis of refractive error. Optom Vis Sci, 1997.",
+        "https://doi.org/10.1097/00006324-199706000-00019"
+      ],
+      [
+        "Flitcroft DI et al. IMI: Defining and classifying myopia: a proposed set of standards for clinical and epidemiologic studies. Invest Ophthalmol Vis Sci, 2019.",
+        "https://doi.org/10.1167/iovs.18-25957"
+      ]
+    ],
+    "cases": [
+      [
+        "−2,00 −1,00 × 180°: EE −2,50; J0 +0,50; transposição −3,00 +1,00",
+        {
+          "esf": -2,
+          "cil": -1,
+          "eixo": 180
+        },
+        {
+          "raw": {
+            "se": -2.5,
+            "j0": 0.5,
+            "j45": 0,
+            "tesf": -3,
+            "tcil": 1
+          },
+          "level": "mid"
+        }
+      ],
+      [
+        "Limite: −5,50 −1,00: EE −6,00 = alta miopia",
+        {
+          "esf": -5.5,
+          "cil": -1
+        },
+        {
+          "raw": {
+            "se": -6
+          },
+          "level": "high"
+        }
+      ],
+      [
+        "Limite: −0,25 −0,50: EE −0,50 = miopia",
+        {
+          "esf": -0.25,
+          "cil": -0.5
+        },
+        {
+          "raw": {
+            "se": -0.5
+          },
+          "level": "mid"
+        }
+      ],
+      [
+        "+1,00 −1,00 × 90°: EE +0,50, sem miopia; J0 −0,50",
+        {
+          "esf": 1,
+          "cil": -1,
+          "eixo": 90
+        },
+        {
+          "raw": {
+            "se": 0.5,
+            "j0": -0.5
+          },
+          "level": "low"
+        }
+      ]
+    ],
+    "batch": "cirurgia-sentidos",
+    "kind": "Calculadora",
+    "config": null,
+    "areaId": "cirurgia-sentidos",
+    "clinicalReview": "pending",
+    "sourceReview": "pending",
+    "sourceFile": "app/content/ferramentas/cirurgia-sentidos.php",
+    "arithmeticTest": {
+      "status": "passed",
+      "testedAt": "2026-09-25",
+      "total": 4,
+      "passed": 4,
+      "failures": []
+    },
+    "independentArithmeticTest": {
+      "status": "passed",
+      "testedAt": "2026-09-25",
+      "total": 2,
+      "passed": 2,
+      "cases": [
+        {
+          "label": "Cilindro zero conserva esfera e zera vetores",
+          "input": {
+            "esf": 2,
+            "cil": 0,
+            "eixo": 90
+          },
+          "expected": {
+            "se": 2,
+            "j0": 0,
+            "j45": 0,
+            "tesf": 2,
+            "tcil": 0
+          },
+          "status": "passed",
+          "failures": []
+        },
+        {
+          "label": "Esfera+metade do cilindro e transposição",
+          "input": {
+            "esf": 2,
+            "cil": -2,
+            "eixo": 90
+          },
+          "expected": {
+            "se": 1,
+            "j0": -1,
+            "j45": 0,
+            "tesf": 0,
+            "tcil": 2
+          },
+          "status": "passed",
+          "failures": []
+        }
+      ]
+    }
+  },
+  "review": {
+    "status": "needs-review",
+    "reason": "Revisão documental e clínica independente pendente.",
+    "clinicalValidation": "not-performed"
+  },
+  "sourceFile": {
+    "path": "app/content/ferramentas/cirurgia-sentidos.php",
+    "sha256": "21fc91a9a8187a66496f68c2ac8fbdd20a65ceeea519687c963b857f72640866",
+    "bytes": 89063
+  },
+  "clinicalValidation": "not-performed"
+}

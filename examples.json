@@ -1,0 +1,83 @@
+[
+  {
+    "label": "−2,00 −1,00 × 180°: EE −2,50; J0 +0,50; transposição −3,00 +1,00",
+    "input": {
+      "esf": -2,
+      "cil": -1,
+      "eixo": 180
+    },
+    "expected": {
+      "raw": {
+        "se": -2.5,
+        "j0": 0.5,
+        "j45": 0,
+        "tesf": -3,
+        "tcil": 1
+      },
+      "level": "mid"
+    },
+    "originalInput": {
+      "esf": -2,
+      "cil": -1,
+      "eixo": 180
+    },
+    "expandedZeroOptions": []
+  },
+  {
+    "label": "Limite: −5,50 −1,00: EE −6,00 = alta miopia",
+    "input": {
+      "esf": -5.5,
+      "cil": -1
+    },
+    "expected": {
+      "raw": {
+        "se": -6
+      },
+      "level": "high"
+    },
+    "originalInput": {
+      "esf": -5.5,
+      "cil": -1
+    },
+    "expandedZeroOptions": []
+  },
+  {
+    "label": "Limite: −0,25 −0,50: EE −0,50 = miopia",
+    "input": {
+      "esf": -0.25,
+      "cil": -0.5
+    },
+    "expected": {
+      "raw": {
+        "se": -0.5
+      },
+      "level": "mid"
+    },
+    "originalInput": {
+      "esf": -0.25,
+      "cil": -0.5
+    },
+    "expandedZeroOptions": []
+  },
+  {
+    "label": "+1,00 −1,00 × 90°: EE +0,50, sem miopia; J0 −0,50",
+    "input": {
+      "esf": 1,
+      "cil": -1,
+      "eixo": 90
+    },
+    "expected": {
+      "raw": {
+        "se": 0.5,
+        "j0": -0.5
+      },
+      "level": "low"
+    },
+    "originalInput": {
+      "esf": 1,
+      "cil": -1,
+      "eixo": 90
+    },
+    "expandedZeroOptions": []
+  }
+]
