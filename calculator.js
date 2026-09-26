@@ -1,9 +1,11 @@
-/* ELUCENIA standalone integration. Source package metadata and rights: README.md. */
+/* tool-equivalente-esferico · Elucenia · https://github.com/Elucenia/tool-equivalente-esferico
+   Copyright (c) 2026 Elucenia · Felipe Guedes (fgxdev.com). Licensed under the Apache License 2.0: keep this notice and the NOTICE file, and mark your changes.
+   Standalone integration. Package metadata and rights: README.md. */
 (function(root){'use strict';
 function freeze(value){if(value&&typeof value==='object'){for(const item of Object.values(value))freeze(item);Object.freeze(value);}return value;}
 const TOOL=freeze({"id":"equivalente-esferico","title":"Equivalente esférico e transposição","fields":[["esf","Esfera","num",{"min":-30,"max":30,"step":0.25,"unit":"D","ph":"-2,00"}],["cil","Cilindro","num",{"min":-10,"max":10,"step":0.25,"unit":"D","ph":"-1,00"}],["eixo","Eixo do cilindro","num",{"min":0,"max":180,"step":1,"unit":"graus","ph":"180","opt":true}]],"config":null,"reviewStatus":"needs-review","clinicalValidation":"not-performed"});
 const window={};
-/* ELUCENIA arithmetic registry. No DOM access, storage, telemetry or network requests. */
+/* Elucenia arithmetic registry. No DOM access, storage, telemetry or network requests. */
 (function(root){
   'use strict';
   const CALC={fn:Object.create(null)};
